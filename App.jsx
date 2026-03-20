@@ -14,6 +14,18 @@ const animalImages = [
   { name: 'gator', image: gatorSvg },
 ];
 
+function HeartButton() {
+  const [isLarge, setIsLarge] = useState(false);
+  return (
+    <img
+      src={heartSvg}
+      alt="heart"
+      className={`heart ${isLarge ? 'large' : ''}`}
+      onClick={() => setIsLarge(!isLarge)}
+    />
+  );
+}
+
 function App() {
   const [animals, setAnimals] = useState([]);
 
@@ -22,11 +34,10 @@ function App() {
     const randomIndex = Math.floor(Math.random() * animalImages.length);
     const randomAnimal = animalImages[randomIndex];
     
-    // Thêm động vật mới vào danh sách với id duy nhất
+    // Thêm động vật mới vào danh sách
     const newAnimal = {
       ...randomAnimal,
       id: Date.now() + Math.random(),
-      hasHeart: Math.random() > 0.5, // Ngẫu nhiên có trái tim hay không
     };
     
     setAnimals([...animals, newAnimal]);
@@ -49,7 +60,7 @@ function App() {
         {animals.map((animal) => (
           <div key={animal.id} className="animal-card">
             <img src={animal.image} alt={animal.name} className="animal-image" />
-            {animal.hasHeart && <img src={heartSvg} alt="heart" className="heart" />}
+            <HeartButton />
           </div>
         ))}
       </div>
