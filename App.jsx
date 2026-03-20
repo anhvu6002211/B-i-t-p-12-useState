@@ -1,0 +1,60 @@
+import React, { useState } from 'react';
+import './App.css';
+
+// Import các file SVG
+import horseSvg from './horse.svg';
+import dogSvg from './dog.svg';
+import gatorSvg from './gator.svg';
+import heartSvg from './heart.svg';
+
+// Danh sách các hình ảnh động vật
+const animalImages = [
+  { name: 'horse', image: horseSvg },
+  { name: 'dog', image: dogSvg },
+  { name: 'gator', image: gatorSvg },
+];
+
+function App() {
+  const [animals, setAnimals] = useState([]);
+
+  const handleAddAnimal = () => {
+    // Chọn ngẫu nhiên một động vật từ danh sách
+    const randomIndex = Math.floor(Math.random() * animalImages.length);
+    const randomAnimal = animalImages[randomIndex];
+    
+    // Thêm động vật mới vào danh sách với id duy nhất
+    const newAnimal = {
+      ...randomAnimal,
+      id: Date.now() + Math.random(),
+      hasHeart: Math.random() > 0.5, // Ngẫu nhiên có trái tim hay không
+    };
+    
+    setAnimals([...animals, newAnimal]);
+  };
+
+  return (
+    <div className="app">
+      {/* Header */}
+      <div className="header"></div>
+      
+      {/* Add Animal Button */}
+      <div className="button-container">
+        <button className="add-animal-btn" onClick={handleAddAnimal}>
+          Add Animal
+        </button>
+      </div>
+
+      {/* Animal List */}
+      <div className="animal-list">
+        {animals.map((animal) => (
+          <div key={animal.id} className="animal-card">
+            <img src={animal.image} alt={animal.name} className="animal-image" />
+            {animal.hasHeart && <img src={heartSvg} alt="heart" className="heart" />}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;

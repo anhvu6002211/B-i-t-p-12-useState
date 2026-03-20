@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Header */
+.header {
+  height: 40px;
+  background-color: #333;
+  width: 100%;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.add-animal-btn {
+  padding: 15px 120px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #90EE90;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-animal-btn:hover {
+  background-color: #7CCD7C;
+}
+
+/* Animal List */
+.animal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+/* Animal Card */
+.animal-card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.animal-image {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.heart {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+}
